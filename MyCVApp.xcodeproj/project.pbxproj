@@ -16,6 +16,7 @@
 		FE3739132A794CEF00C8D198 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3739122A794CEF00C8D198 /* Profile.swift */; };
 		FE3739162A79536100C8D198 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3739152A79536100C8D198 /* ProfileViewModel.swift */; };
 		FE3739202A795FFF00C8D198 /* SkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE37391F2A795FFF00C8D198 /* SkillCell.swift */; };
+		FE3739222A799AD200C8D198 /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3739212A799AD200C8D198 /* AlignedCollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		FE3739122A794CEF00C8D198 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		FE3739152A79536100C8D198 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		FE37391F2A795FFF00C8D198 /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
+		FE3739212A799AD200C8D198 /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				FE3739102A794CD300C8D198 /* Views */,
 				FE3739112A794CDD00C8D198 /* Models */,
 				FE3739142A79534E00C8D198 /* ViewModels */,
+				FE3739212A799AD200C8D198 /* AlignedCollectionViewFlowLayout.swift */,
 				FE3739172A79597100C8D198 /* Resources */,
 				FE3739092A79461F00C8D198 /* Info.plist */,
 			);
@@ -192,6 +195,7 @@
 				FE3739132A794CEF00C8D198 /* Profile.swift in Sources */,
 				FE3738FC2A79461E00C8D198 /* AppDelegate.swift in Sources */,
 				FE3738FE2A79461E00C8D198 /* SceneDelegate.swift in Sources */,
+				FE3739222A799AD200C8D198 /* AlignedCollectionViewFlowLayout.swift in Sources */,
 				FE3739162A79536100C8D198 /* ProfileViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

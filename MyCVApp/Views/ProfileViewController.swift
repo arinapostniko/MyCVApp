@@ -51,33 +51,33 @@ class ProfileViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
         
-        updateEditModeUI()
+//        updateEditModeUI()
     }
     
-    private func updateEditModeUI() {
-        if isEditMode {
-            let addSkillButton = UIButton(type: .system)
-            addSkillButton.setTitle("+", for: .normal)
-            addSkillButton.tintColor = .black
-            addSkillButton.addTarget(self, action: #selector(addSkillButtonPressed), for: .touchUpInside)
-            collectionView.addSubview(addSkillButton)
-            addSkillButton.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                addSkillButton.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
-                addSkillButton.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor),
-            ])
-        } else {
-            let addSkillButton = collectionView.subviews.first { $0 is UIButton }
-            addSkillButton?.removeFromSuperview()
-        }
-    }
+//    private func updateEditModeUI() {
+//        if isEditMode {
+//            let addSkillButton = UIButton(type: .system)
+//            addSkillButton.setTitle("+", for: .normal)
+//            addSkillButton.tintColor = .black
+//            addSkillButton.addTarget(self, action: #selector(addSkillButtonPressed), for: .touchUpInside)
+//            collectionView.addSubview(addSkillButton)
+//            addSkillButton.translatesAutoresizingMaskIntoConstraints = false
+//            NSLayoutConstraint.activate([
+//                addSkillButton.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
+//                addSkillButton.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor),
+//            ])
+//        } else {
+//            let addSkillButton = collectionView.subviews.first { $0 is UIButton }
+//            addSkillButton?.removeFromSuperview()
+//        }
+//    }
     
     // MARK: - IBActions
     @IBAction func editButtonPressed(_ sender: UIButton) {
         isEditMode.toggle()
         sender.setImage(UIImage(named: isEditMode ? "checkmark" : "pencil"), for: .normal)
         viewModel.editSkills()
-        updateEditModeUI()
+//        updateEditModeUI()
         collectionView.reloadData()
         self.view.layoutIfNeeded()
     }
@@ -86,7 +86,7 @@ class ProfileViewController: UIViewController {
 // MARK: - UICollectionView
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.skills.count
+        isEditMode ? viewModel.skills.count + 1 : viewModel.skills.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -105,6 +105,29 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
             }
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("tap")
+        guard indexPath.row == viewModel.skills.count else {
+            return
+        }
+    
+        let alert = UIAlertController(title: "Добавление навыка", message: "Введите название навыка которым вы владеете", preferredStyle: UIAlertController.Style.alert)
+        
+        let action = UIAlertAction.init(title: "Добавить", style: .default, handler: { [self] action in
+            if let textField = alert.textFields?.first, let text = textField.text {
+                viewModel.skills.append(text)
+                collectionView.reloadData()
+                self.view.layoutIfNeeded()
+            }
+        })
+        alert.addTextField {
+            (textField) in textField.placeholder = "Введите название"
+        }
+        alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc
