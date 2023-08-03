@@ -50,34 +50,13 @@ class ProfileViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
-        
-//        updateEditModeUI()
     }
-    
-//    private func updateEditModeUI() {
-//        if isEditMode {
-//            let addSkillButton = UIButton(type: .system)
-//            addSkillButton.setTitle("+", for: .normal)
-//            addSkillButton.tintColor = .black
-//            addSkillButton.addTarget(self, action: #selector(addSkillButtonPressed), for: .touchUpInside)
-//            collectionView.addSubview(addSkillButton)
-//            addSkillButton.translatesAutoresizingMaskIntoConstraints = false
-//            NSLayoutConstraint.activate([
-//                addSkillButton.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
-//                addSkillButton.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor),
-//            ])
-//        } else {
-//            let addSkillButton = collectionView.subviews.first { $0 is UIButton }
-//            addSkillButton?.removeFromSuperview()
-//        }
-//    }
     
     // MARK: - IBActions
     @IBAction func editButtonPressed(_ sender: UIButton) {
         isEditMode.toggle()
         sender.setImage(UIImage(named: isEditMode ? "checkmark" : "pencil"), for: .normal)
         viewModel.editSkills()
-//        updateEditModeUI()
         collectionView.reloadData()
         self.view.layoutIfNeeded()
     }

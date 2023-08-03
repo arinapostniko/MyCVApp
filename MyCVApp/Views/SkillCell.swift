@@ -35,7 +35,12 @@ class SkillCell: UICollectionViewCell {
     }
     
     func editModeIsOn() {
-        deleteButton = UIButton(frame: CGRect(x: 0.1 * self.frame.width, y: skillLabel.frame.minY + 1.5, width: 14, height: 14))
+        deleteButton = UIButton(frame: CGRect(
+            x: 0.1 * self.frame.width,
+            y: skillLabel.frame.minY + 1.5,
+            width: 14,
+            height: 14
+        ))
         deleteButton.setImage(UIImage(named: "crosss"), for: .normal)
         
         self.addSubview(deleteButton)
